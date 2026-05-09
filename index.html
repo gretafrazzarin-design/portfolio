@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///Users/greta/Downloads/greta-frazzarin-portfolio_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greta Frazzarin — UX/UI Designer</title>
+<style>
+  :root {
+    --teal: #1D9E75;
+    --teal-light: #E1F5EE;
+    --teal-mid: #5DCAA5;
+    --teal-dark: #0F6E56;
+    --teal-deeper: #085041;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --bg: #ffffff;
+    --bg-secondary: #f7f7f5;
+    --border: rgba(0,0,0,0.1);
+    --border-hover: rgba(29,158,117,0.4);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 2.5rem;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-size: 15px; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--text); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    font-size: 13px; color: var(--text-muted); text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    font-size: 12px; font-weight: 500;
+    background: var(--teal); color: #fff;
+    padding: 7px 16px; border-radius: 20px;
+    text-decoration: none; transition: background 0.15s;
+  }
+  .nav-cta:hover { background: var(--teal-dark); }
+
+  /* HERO */
+  .hero {
+    padding: 6rem 2.5rem 4rem;
+    max-width: 900px;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500;
+    background: var(--teal-light); color: var(--teal-dark);
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-tag::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--teal); border-radius: 50%;
+    display: inline-block;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 600; line-height: 1.1;
+    color: var(--text); margin-bottom: 0.5rem;
+  }
+  .hero h1 .accent { color: var(--teal); }
+  .hero-sub {
+    font-size: 16px; color: var(--text-muted);
+    max-width: 520px; margin-bottom: 2rem; line-height: 1.7;
+  }
+  .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal); color: #fff;
+    padding: 11px 22px; border-radius: var(--radius-sm);
+    font-size: 14px; font-weight: 500; text-decoration: none;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--teal-dark); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--text);
+    border: 0.5px solid var(--border);
+    padding: 11px 22px; border-radius: var(--radius-sm);
+    font-size: 14px; text-decoration: none;
+    transition: border-color 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* SKILLS */
+  .skills-bar {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    padding: 0 2.5rem 3.5rem;
+  }
+  .skill {
+    font-size: 12px; color: var(--teal-deep, #085041);
+    background: var(--teal-light);
+    border: 0.5px solid var(--teal-mid);
+    border-radius: 20px; padding: 5px 13px;
+    white-space: nowrap;
+  }
+
+  /* SECTION */
+  section { padding: 3rem 2.5rem; }
+  .section-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 1.75rem;
+  }
+  .section-label {
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--teal);
+  }
+  .section-title {
+    font-size: 22px; font-weight: 600;
+    color: var(--text); margin-top: 4px;
+  }
+
+  /* FILTER TABS */
+  .filter-tabs {
+    display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 2rem;
+  }
+  .tab {
+    font-size: 13px; padding: 7px 16px;
+    border-radius: 20px; cursor: pointer;
+    border: 0.5px solid var(--border);
+    background: transparent; color: var(--text-muted);
+    transition: all 0.15s;
+  }
+  .tab:hover { border-color: var(--teal-mid); color: var(--teal); }
+  .tab.active {
+    background: var(--teal); color: #fff; border-color: var(--teal);
+  }
+
+  /* PROJECT GRID */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .proj-card {
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .proj-card:hover { border-color: var(--teal-mid); transform: translateY(-2px); }
+  .proj-card.hidden { display: none; }
+
+  .proj-thumb {
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+    position: relative; overflow: hidden;
+  }
+  .proj-thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+    position: absolute; top: 0; left: 0;
+  }
+  .proj-thumb.graphic { background: #FBEAF0; }
+  .proj-thumb.website { background: #E6F1FB; }
+  .proj-thumb.mobile  { background: var(--teal-light); }
+
+  .proj-body { padding: 1rem 1.1rem 1.2rem; flex: 1; }
+  .proj-cat {
+    font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--teal-dark); margin-bottom: 6px;
+  }
+  .proj-name {
+    font-size: 15px; font-weight: 600;
+    color: var(--text); margin-bottom: 5px;
+  }
+  .proj-desc {
+    font-size: 13px; color: var(--text-muted); line-height: 1.5;
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none; position: fixed;
+    inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.55);
+    align-items: center; justify-content: center;
+    padding: 1.5rem;
+  }
+  .lightbox.open { display: flex; }
+  .lb-card {
+    background: var(--bg);
+    border-radius: var(--radius);
+    max-width: 680px; width: 100%;
+    max-height: 90vh; overflow-y: auto;
+    padding: 2rem;
+    position: relative;
+  }
+  .lb-close {
+    position: absolute; top: 1rem; right: 1rem;
+    background: none; border: none; font-size: 22px;
+    cursor: pointer; color: var(--text-muted); line-height: 1;
+  }
+  .lb-cat {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--teal); margin-bottom: 6px;
+  }
+  .lb-title { font-size: 22px; font-weight: 600; margin-bottom: 0.75rem; }
+  .lb-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+  .lb-thumb {
+    width: 100%; height: 220px; border-radius: var(--radius-sm);
+    object-fit: cover; margin-bottom: 1.25rem;
+    background: var(--teal-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 52px;
+  }
+  .lb-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); }
+  .lb-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 1rem; }
+  .lb-tag {
+    font-size: 11px; padding: 4px 10px;
+    background: var(--bg-secondary);
+    border: 0.5px solid var(--border);
+    border-radius: 20px; color: var(--text-muted);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    max-width: 800px;
+  }
+  @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-block h3 { font-size: 15px; font-weight: 600; margin-bottom: 0.5rem; }
+  .about-block p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-band {
+    margin: 0 2.5rem 3rem;
+    background: linear-gradient(135deg, var(--teal-light), #c8f0e2);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+  }
+  .contact-band h2 { font-size: 20px; font-weight: 600; color: var(--teal-deeper); margin-bottom: 4px; }
+  .contact-band p { font-size: 14px; color: var(--teal-dark); }
+  .contact-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 18px; border-radius: var(--radius-sm);
+    font-size: 13px; font-weight: 500;
+    text-decoration: none; transition: all 0.15s;
+  }
+  .contact-link.email { background: var(--teal); color: #fff; }
+  .contact-link.email:hover { background: var(--teal-dark); }
+  .contact-link.linkedin { background: #fff; color: var(--teal-dark); border: 0.5px solid var(--teal-mid); }
+  .contact-link.linkedin:hover { background: var(--teal-light); }
+
+  footer {
+    padding: 1.25rem 2.5rem;
+    border-top: 0.5px solid var(--border);
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="file:///Users/greta/Downloads/greta-frazzarin-portfolio_1.html#" class="nav-logo">GF</a>
+  <div class="nav-links">
+    <a href="file:///Users/greta/Downloads/greta-frazzarin-portfolio_1.html#work">work</a>
+    <a href="file:///Users/greta/Downloads/greta-frazzarin-portfolio_1.html#about">about</a>
+    <a href="file:///Users/greta/Downloads/greta-frazzarin-portfolio_1.html#contact">contact</a>
+    <a href="mailto:gretafrazzarin@gmail.com" class="nav-cta">get in touch</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">available for new opportunities</div>
+  <h1>Greta Frazzarin<br><span class="accent">UX/UI Designer</span></h1>
+  <p class="hero-sub">Mid-level designer crafting user-centered experiences across mobile apps, web platforms, and brand identities. Based in Milan.</p>
+  <div class="hero-btns">
+    <a href="file:///Users/greta/Downloads/greta-frazzarin-portfolio_1.html#work" class="btn-primary">↓ view work</a>
+    <a href="https://www.linkedin.com/in/greta-frazzarin-7276a2131/" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+  </div>
+</div>
+
+<div class="skills-bar">
+  <span class="skill">UX design</span>
+  <span class="skill">design thinking</span>
+  <span class="skill">branding</span>
+  <span class="skill">Figma</span>
+  <span class="skill">FigJam</span>
+  <span class="skill">Miro</span>
+  <span class="skill">Maze</span>
+  <span class="skill">Notion</span>
+  <span class="skill">Figma Make</span>
+  <span class="skill">Lovable</span>
+  <span class="skill">Claude</span>
+</div>
+
+<section id="work">
+  <div class="section-header">
+    <div>
+      <div class="section-label">portfolio</div>
+      <div class="section-title">Selected projects</div>
+    </div>
+  </div>
+
+  <div class="filter-tabs">
+    <button class="tab active" data-filter="all">All</button>
+    <button class="tab" data-filter="graphic">Graphic design</button>
+    <button class="tab" data-filter="website">Website</button>
+    <button class="tab" data-filter="mobile">Mobile app</button>
+  </div>
+
+  <div class="project-grid" id="projectGrid">
+
+    <!-- GRAPHIC DESIGN -->
+    <div class="proj-card" data-cat="graphic" data-index="0">
+      <div class="proj-thumb graphic">🎨</div>
+      <div class="proj-body">
+        <div class="proj-cat">Graphic design</div>
+        <div class="proj-name">Graphics for website Yolo</div>
+        <div class="proj-desc">Visual assets and illustration system designed for the Yolo brand website.</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="graphic" data-index="1">
+      <div class="proj-thumb graphic">🖼</div>
+      <div class="proj-body">
+        <div class="proj-cat">Graphic design</div>
+        <div class="proj-name">Company poster</div>
+        <div class="proj-desc">Corporate poster design balancing visual impact with brand consistency.</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="graphic" data-index="2">
+      <div class="proj-thumb graphic">📖</div>
+      <div class="proj-body">
+        <div class="proj-cat">Graphic design</div>
+        <div class="proj-name">Book layout</div>
+        <div class="proj-desc">Editorial layout design with careful attention to typography and reading flow.</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="graphic" data-index="3">
+      <div class="proj-thumb graphic">✦</div>
+      <div class="proj-body">
+        <div class="proj-cat">Graphic design</div>
+        <div class="proj-name">TEDx illustrations</div>
+        <div class="proj-desc">Custom illustration set created for a TEDx event visual identity.</div>
+      </div>
+    </div>
+
+    <!-- WEBSITE -->
+    <div class="proj-card" data-cat="website" data-index="4">
+      <div class="proj-thumb website">🌿</div>
+      <div class="proj-body">
+        <div class="proj-cat">Website</div>
+        <div class="proj-name">Vegan restaurant website</div>
+        <div class="proj-desc">Full UX/UI design for a vegan restaurant — from information architecture to final UI.</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="website" data-index="5">
+      <div class="proj-thumb website">💼</div>
+      <div class="proj-body">
+        <div class="proj-cat">Website</div>
+        <div class="proj-name">Corporate bootcamp website</div>
+        <div class="proj-desc">Professional web presence for a corporate training program, focused on conversion.</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="website" data-index="6">
+      <div class="proj-thumb website">🔬</div>
+      <div class="proj-body">
+        <div class="proj-cat">Website</div>
+        <div class="proj-name">Clinical Trial Platform</div>
+        <div class="proj-desc">Complex data platform redesigned for clinical researchers — simplifying dense workflows.</div>
+      </div>
+    </div>
+
+    <!-- MOBILE APP -->
+    <div class="proj-card" data-cat="mobile" data-index="7">
+      <div class="proj-thumb mobile">☕</div>
+      <div class="proj-body">
+        <div class="proj-cat">Mobile app</div>
+        <div class="proj-name">Alessi Coffee</div>
+        <div class="proj-desc">Mobile app concept for the iconic Italian design brand, exploring the coffee ritual.</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="mobile" data-index="8">
+      <div class="proj-thumb mobile">🏥</div>
+      <div class="proj-body">
+        <div class="proj-cat">Mobile app</div>
+        <div class="proj-name">Healthcare app</div>
+        <div class="proj-desc">Patient-centered mobile experience simplifying appointment booking and health tracking.</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="mobile" data-index="9">
+      <div class="proj-thumb mobile">🏛</div>
+      <div class="proj-body">
+        <div class="proj-cat">Mobile app</div>
+        <div class="proj-name">"Museo Verrucchio" Adventure Game</div>
+        <div class="proj-desc">Gamified museum experience app turning a historical collection into an interactive adventure.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-header">
+    <div>
+      <div class="section-label">about</div>
+      <div class="section-title">Hi, I'm Greta</div>
+    </div>
+  </div>
+  <div class="about-grid">
+    <div class="about-block">
+      <h3>Background</h3>
+      <p>Mid-level UX/UI designer with experience across mobile apps, web platforms, and brand identities. I approach every project with curiosity and a user-first mindset, blending design thinking with strong visual craft.</p>
+    </div>
+    <div class="about-block">
+      <h3>Process</h3>
+      <p>I work end-to-end — from user research and wireframes to polished UI and prototypes. I collaborate closely with product and engineering teams to ship work that actually makes sense for the people using it.</p>
+    </div>
+    <div class="about-block">
+      <h3>Currently</h3>
+      <p>Working as a UX/UI Designer in Milan. Open to new full-time and freelance opportunities where design can make a real difference.</p>
+    </div>
+    <div class="about-block">
+      <h3>Beyond design</h3>
+      <p>When I'm not designing, I'm running (training for half-marathons 🏃‍♀️), painting with oils, or hunting for the perfect vegetarian recipe.</p>
+    </div>
+  </div>
+</section>
+
+<div class="contact-band" id="contact">
+  <div>
+    <h2>Let's work together</h2>
+    <p>Open to full-time and freelance opportunities — based in Milan.</p>
+  </div>
+  <div class="contact-links">
+    <a href="mailto:gretafrazzarin@gmail.com" class="contact-link email">✉ gretafrazzarin@gmail.com</a>
+    <a href="https://www.linkedin.com/in/greta-frazzarin-7276a2131/" target="_blank" class="contact-link linkedin">LinkedIn ↗</a>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Greta Frazzarin</span>
+  <span>Milan, IT · UX/UI Designer</span>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-card">
+    <button class="lb-close" id="lbClose">✕</button>
+    <div class="lb-cat" id="lbCat"></div>
+    <div class="lb-title" id="lbTitle"></div>
+    <div class="lb-thumb" id="lbThumb"></div>
+    <div class="lb-desc" id="lbDesc"></div>
+    <div class="lb-tags" id="lbTags"></div>
+  </div>
+</div>
+
+<script>
+  const projects = [
+    { cat: "Graphic design", name: "Graphics for website Yolo", emoji: "🎨", desc: "Visual assets and illustration system designed for the Yolo brand website. The project involved creating a cohesive set of graphics that would work across the site — from hero visuals to UI illustrations and iconography.", tags: ["Illustration", "Visual identity", "Figma"] },
+    { cat: "Graphic design", name: "Company poster", emoji: "🖼", desc: "Corporate poster design balancing visual impact with brand consistency. Produced for internal and external communication, this project required a strong typographic hierarchy and bold visual composition.", tags: ["Print design", "Typography", "Branding"] },
+    { cat: "Graphic design", name: "Book layout", emoji: "📖", desc: "Editorial layout design with careful attention to typography, grid systems, and reading flow. The result is a clean, legible design that supports long-form content.", tags: ["Editorial", "Typography", "Layout"] },
+    { cat: "Graphic design", name: "TEDx illustrations", emoji: "✦", desc: "Custom illustration set created for a TEDx event visual identity. The illustrations needed to feel both conceptual and accessible, capturing the spirit of ideas worth spreading.", tags: ["Illustration", "Event branding", "Figma"] },
+    { cat: "Website", name: "Vegan restaurant website", emoji: "🌿", desc: "Full UX/UI design for a vegan restaurant — from information architecture to final visual design. The project included user research, wireframing, and a warm, plant-forward visual identity.", tags: ["UX research", "UI design", "Figma"] },
+    { cat: "Website", name: "Corporate bootcamp website", emoji: "💼", desc: "Professional web presence for a corporate training program, focused on conversion and clarity. The design guides visitors through the program's value proposition and into the enrollment funnel.", tags: ["UX design", "Conversion design", "Figma"] },
+    { cat: "Website", name: "Clinical Trial Platform", emoji: "🔬", desc: "Complex data platform redesigned for clinical researchers. The challenge was simplifying dense scientific workflows into an interface that's fast, error-proof, and easy to navigate under pressure.", tags: ["Complex UX", "Data platform", "Healthcare"] },
+    { cat: "Mobile app", name: "Alessi Coffee", emoji: "☕", desc: "Mobile app concept for the iconic Italian design brand, exploring the coffee ritual through a refined, sensory UI. The experience focuses on warmth, craft, and the Alessi aesthetic language.", tags: ["Mobile UX", "Concept", "Figma"] },
+    { cat: "Mobile app", name: "Healthcare app", emoji: "🏥", desc: "Patient-centered mobile experience simplifying appointment booking, health tracking, and communication with healthcare providers. Designed with accessibility and clarity as core principles.", tags: ["Mobile UX", "Healthcare", "Accessibility"] },
+    { cat: "Mobile app", name: '"Museo Verrucchio" Adventure Game', emoji: "🏛", desc: "Gamified museum experience app turning a historical collection into an interactive adventure for young visitors. The project combined game design thinking with cultural heritage communication.", tags: ["Gamification", "Mobile UX", "Cultural design"] },
+  ];
+
+  const tabs = document.querySelectorAll('.tab');
+  const cards = document.querySelectorAll('.proj-card');
+  const lightbox = document.getElementById('lightbox');
+  const lbClose = document.getElementById('lbClose');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      cards.forEach(card => {
+        if (filter === 'all' || card.dataset.cat === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const p = projects[parseInt(card.dataset.index)];
+      document.getElementById('lbCat').textContent = p.cat;
+      document.getElementById('lbTitle').textContent = p.name;
+      document.getElementById('lbDesc').textContent = p.desc;
+      const thumb = document.getElementById('lbThumb');
+      thumb.textContent = p.emoji;
+      const tagsEl = document.getElementById('lbTags');
+      tagsEl.innerHTML = p.tags.map(t => `<span class="lb-tag">${t}</span>`).join('');
+      lightbox.classList.add('open');
+    });
+  });
+
+  lbClose.addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+</script>
+
+
+</body></html>
